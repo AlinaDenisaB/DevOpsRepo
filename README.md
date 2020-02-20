@@ -23,3 +23,9 @@ Introduction
 
 
 ***Introduction***  
+1. Agile  
+1.1. User Stories  
+1.2. Risk Assessment  
+1.3. Continuous Integration Pipeline  
+
+1.4. Trello  
