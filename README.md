@@ -27,5 +27,7 @@ Introduction
 1.1. User Stories  
 1.2. Risk Assessment  
 1.3. Continuous Integration Pipeline  
-
+  
+![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_pipeline.png)  
+  
 1.4. Trello  
