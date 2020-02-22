@@ -1,5 +1,5 @@
 # Online Store Application
-Individual project for DevOps Academy at QA Consulting.  
+Individual project that involves concepts from all core training modules.  
   
 **Content**
 -
