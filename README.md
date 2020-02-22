@@ -1,14 +1,15 @@
 # Online Store Application
 Individual project for DevOps Academy at QA Consulting.  
   
-**Index**
+**Content**
 -
 Introduction  
 1. Agile  
 1.1. User Stories  
 1.2. Risk Assessment  
-1.3. Continuous Integration Pipeline  
-1.4. Trello  
+1.3. Entity Relationships Diagram  
+1.4. Continuous Integration Pipeline  
+1.5. Trello  
 2. Back-end  
 2.1. Azure Database for MySQL  
 3. Python Program  
@@ -26,8 +27,13 @@ Introduction
 1. Agile  
 1.1. User Stories  
 1.2. Risk Assessment  
-1.3. Continuous Integration Pipeline  
+
+1.3. Entity Relationships Diagram  
+
+![ERD](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/ERD.png)  
+
+1.4. Continuous Integration Pipeline  
   
 ![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_pipeline.png)  
   
-1.4. Trello  
+1.5. Trello  
