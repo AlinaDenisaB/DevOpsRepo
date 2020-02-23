@@ -9,9 +9,7 @@ Introduction
 1.2. Risk Assessment  
 1.3. Entity Relationships Diagram  
 1.4. Continuous Integration Pipeline  
-1.5. Trello  
-2. Back-end  
-2.1. Azure Database for MySQL  
+2. MySQL Database  
 3. Python Program  
 4. Testing  
 4.1. Unit testing with Python: Pytest  
@@ -41,4 +39,12 @@ Introduction
   
 ![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_pipeline.png)  
   
-  1.5. Trello  
+ **Technologies Used**  
+-> MySQL - Database  
+-> Python - Logic  
+-> Flask and HTML - Front End   
+-> [Git](https://github.com/AlinaDenisaB/DevOpsRepo) - VCS  
+-> [Trello](https://trello.com/b/h1w14O23/python-project-online-store) - Project Tracking  
+-> Jenkins - CI server  
+-> Pytest - Unit testing with Python 
+-> Microsoft Azure - Live environment
