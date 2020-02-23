@@ -26,6 +26,10 @@ Introduction
 ***Introduction***  
 1. Agile  
 1.1. User Stories  
+•	As a vendor, I want to publish my products online, so that I can make it accessible for anyone and increase my business.  
+•	As an online shopping customer, I want to be able to access the website, so that I can find out more details about the products.  
+•	As an online shopping customer, I want to create an account, so that I can be able to order my favorite products at home.  
+  
 1.2. Risk Assessment  
 
 1.3. Entity Relationships Diagram  
