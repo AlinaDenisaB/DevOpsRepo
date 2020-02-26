@@ -1,24 +1,61 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    <a href="{{ url_for('home')}}">Home</a>
-    <a href="{{ url_for('products')}}">Products</a>
-
     <div>
-	    <p1>There are the products of the online store </p1>
+	    <h3> <p1> There are the products of my online store </p1> </h3>
     </div>
-    <div align="center">
-    	    <img src="{{url_for('static', filename='mug1.jpg')}}" align="middle" width="450" height="300">
-            <img src="{{url_for('static', filename='mug2.jpg')}}" align="middle" width="450" height="300">
-    </div>
-    <br>
-    <div align="center">
-            <img src="{{url_for('static', filename='notebook1.jpg')}}" align="middle" width="450" height="300">
-            <img src="{{url_for('static', filename='notebook2.jpg')}}" align="middle" width="450" height="300">
+    <h2>CATEGORY</h2>
+    <div id="myBtnContainer">
+	    <button class="btn active" onclick="filterSelection('all')">Show all</button>
+	    <button class="btn active" onclick="filterSelection('mugs')">Mugs</button>
+	    <button class="btn active" onclick="filterSelection('notebooks')">Notebooks</button>
+	    <button class="btn active" onclick="filterSelection('tshirts')">T-shirts</button>
     </div>
     <br>
-    <div align="center">
-            <img src="{{url_for('static', filename='tshirt1.jpg')}}" align="middle" width="450" height="300">
-            <img src="{{url_for('static', filename='tshirt2.jpg')}}" align="middle" width="450" height="300">
+    <div class="row">
+	    <div class="column mugs">
+		    <div class="content">
+			    <img src="{{url_for('static', filename='mug1.jpg')}}" align="middle" width="350" height="300">
+			    <h4>Mug</h4>
+			    <p><i>The rings go and your finger stay</i></p>
+		    </div>
+	    </div>
+	    <div class="column mugs">
+		    <div class="content">
+                            <img src="{{url_for('static', filename='mug2.jpg')}}" align="middle" width="350" height="300">
+                            <h4>Mug</h4>
+			    <p><i>Fish dies by the mouth</i></p>
+                    </div>
+            </div>
+            <div class="column notebooks">
+                    <div class="content">
+                            <img src="{{url_for('static', filename='notebook1.jpg')}}" align="middle" width="350" height="300">
+                            <h4>Notebook Tram</h4>
+			    <p><i>One of the most famous icons of Lisbon</i></p>
+                    </div>
+            </div>
+            <div class="column notebooks">
+                    <div class="content">
+                            <img src="{{url_for('static', filename='notebook2.jpg')}}" align="middle" width="350" height="300">
+                            <h4>Notebook Moon</h4>
+			    <p><i>The night is a good counselor</i></p>
+                    </div>
+            </div>
+            <div class="column tshirts">
+                    <div class="content">
+                            <img src="{{url_for('static', filename='tshirt1.jpg')}}" align="middle" width="350" height="300">
+                            <h4>T-shirt Monkey</h4>
+			    <p><i>Each monkey on its branch</i></p>
+                    </div>
+            </div>
+            <div class="column tshirts">
+                    <div class="content">
+                            <img src="{{url_for('static', filename='tshirt2.jpg')}}" align="middle" width="350" height="300">
+                            <h4>T-shirt time</h4>
+			    <p><i>Time is the clock of life</i></p>
+                    </div>
+            </div>
+
+
     </div>
 
 {% endblock %}
