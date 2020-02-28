@@ -11,9 +11,7 @@ Introduction
 1.4. Continuous Integration Pipeline  
 2. MySQL Database  
 3. Python Program  
-4. Testing  
-4.1. Unit testing with Python: Pytest  
-4.2. Integration Testing with Python: Selenium  
+4. Unit testing with Python: Pytest  
 5. Back-end  
 5.1. Flask (HTML)  
 6. Version Control: Git  
