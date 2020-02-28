@@ -1,61 +1,197 @@
-{% extends "layout.html" %}
-{% block body_content %}
-    <div>
-	    <h3> <p1> There are the products of my online store </p1> </h3>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<!-- MAIN (Center website) -->
+<div class="main">
+<h1>ONLINE STORE APPLICATION</h1>
+<hr>
+
+<h2>CATEGORY</h2>
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('mugs')"> Mugs</button>
+  <button class="btn" onclick="filterSelection('notebooks')"> Notebooks</button>
+  <button class="btn" onclick="filterSelection('tshirts')"> T-shirts</button>
+</div>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column mugs">
+    <div class="content">
+	<img src="{{url_for('static', filename='mug1.jpg')}}" alt="Mug rings" height="250" width="300">
+      <h4>Mug rings</h4>
+      <p><i>The rings go and your finger stay</i></p>
     </div>
-    <h2>CATEGORY</h2>
-    <div id="myBtnContainer">
-	    <button class="btn active" onclick="filterSelection('all')">Show all</button>
-	    <button class="btn active" onclick="filterSelection('mugs')">Mugs</button>
-	    <button class="btn active" onclick="filterSelection('notebooks')">Notebooks</button>
-	    <button class="btn active" onclick="filterSelection('tshirts')">T-shirts</button>
+  </div>
+  <div class="column mugs">
+    <div class="content">
+    <img src="{{url_for('static', filename='mug2.jpg')}}" alt="Mug Fish" height="250" width="300">
+      <h4>Mug Fish</h4>
+      <p><i>Fish dies by the mouth</i></p>
     </div>
-    <br>
-    <div class="row">
-	    <div class="column mugs">
-		    <div class="content">
-			    <img src="{{url_for('static', filename='mug1.jpg')}}" align="middle" width="350" height="300">
-			    <h4>Mug</h4>
-			    <p><i>The rings go and your finger stay</i></p>
-		    </div>
-	    </div>
-	    <div class="column mugs">
-		    <div class="content">
-                            <img src="{{url_for('static', filename='mug2.jpg')}}" align="middle" width="350" height="300">
-                            <h4>Mug</h4>
-			    <p><i>Fish dies by the mouth</i></p>
-                    </div>
-            </div>
-            <div class="column notebooks">
-                    <div class="content">
-                            <img src="{{url_for('static', filename='notebook1.jpg')}}" align="middle" width="350" height="300">
-                            <h4>Notebook Tram</h4>
-			    <p><i>One of the most famous icons of Lisbon</i></p>
-                    </div>
-            </div>
-            <div class="column notebooks">
-                    <div class="content">
-                            <img src="{{url_for('static', filename='notebook2.jpg')}}" align="middle" width="350" height="300">
-                            <h4>Notebook Moon</h4>
-			    <p><i>The night is a good counselor</i></p>
-                    </div>
-            </div>
-            <div class="column tshirts">
-                    <div class="content">
-                            <img src="{{url_for('static', filename='tshirt1.jpg')}}" align="middle" width="350" height="300">
-                            <h4>T-shirt Monkey</h4>
-			    <p><i>Each monkey on its branch</i></p>
-                    </div>
-            </div>
-            <div class="column tshirts">
-                    <div class="content">
-                            <img src="{{url_for('static', filename='tshirt2.jpg')}}" align="middle" width="350" height="300">
-                            <h4>T-shirt time</h4>
-			    <p><i>Time is the clock of life</i></p>
-                    </div>
-            </div>
+  </div>
+  <div class="column notebooks">
+    <div class="content">
+      <img src="{{url_for('static', filename='notebook1.jpg')}}" alt="Notebook Lisbon Tram" height="250" width="300">
+      <h4>Notebook Lisbon Tram</h4>
+      <p><i>One of the most famous icons of Lisbon</i></p>
+    </div>
+  </div>
+  <div class="column notebooks">
+    <div class="content">
+     <img src="{{url_for('static', filename='notebook2.jpg')}}" alt="Notebook Moon" height="250" width="300">
+     <h4>Notebook Moon</h4>
+   <p><i>The night is a good counselor</i></p>
+    </div>
+  </div>
+  <div class="column tshirts">
+    <div class="content">
+      <img src="{{url_for('static', filename='tshirt1.jpg')}}" alt="T-shirt monkey" height="250" width="300">
+      <h4>T-shirt monkey</h4>
+      <p><i>Each monkey on its branch</i></p>
+    </div>
+  </div>
+  <div class="column tshirts">
+    <div class="content">
+    <img src="{{url_for('static', filename='tshirt2.jpg')}}" alt="T-shirt time" height="250" width="300">
+      <h4>T-shirt time</h4>
+      <p><i>Time is the clock of life</i></p>
+    </div>
+  </div>
+ 
+<!-- END GRID -->
+</div>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
 
 
-    </div>
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 
-{% endblock %}
+</body>
+</html>
+
+
