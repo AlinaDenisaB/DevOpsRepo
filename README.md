@@ -37,7 +37,7 @@ Introduction
 
   1.4. Continuous Integration Pipeline  
   
-![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_pipeline.png)  
+![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_Pipeline.png)  
   
  **Technologies Used**  
 -> MySQL - Database  
