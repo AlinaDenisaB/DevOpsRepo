@@ -1,26 +1,31 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, FileField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Categories, Products
 
-class AddCategory(FlaskForm):
+class CategoryForm(FlaskForm):
     categoryName = StringField('CategoryName',
         validators = [
-            DataRequired()
+            DataRequired(),
+            Length(min=2, max=100)
         ]
     )
-class AddProduct(FlaskForm):
+    submit=SubmitField('Add category')
+
+class ProductForm(FlaskForm):
     productName = StringField('ProductName',
         validators = [
-            DataRequired()
+            DataRequired(),
+            Length(min=2, max=100)
         ]
     )
     productInfo = StringField('ProductInfo',
         validators = [
-            DataRequired()
+            DataRequired(),
+            Length(min=2, max=1000)
         ]
     )
-    productIMG = LargeBinaryField('ProductIMG',
+    productIMG = FileField('ProductIMG',
         validators = [
             DataRequired()
         ]
@@ -30,4 +35,5 @@ class AddProduct(FlaskForm):
             DataRequired()
         ]
     )
+    submit=SubmitField('Add product')
 

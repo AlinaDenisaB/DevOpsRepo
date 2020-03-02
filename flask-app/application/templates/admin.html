@@ -4,13 +4,13 @@
 <p>This is the admin page, where you can add, update and remove categories and products</p>
 <div class='form'>
         <form method='POST' action=''>
-            {{ form.hidden_tag() }}
+            {{ category_form.hidden_tag() }}
             <div class='form_group'>
-                {{ form.categoryName.label }}
-                {{ form.categoryName }}
-                {% if form.categoryName.errors %}
+                {{ category_form.categoryName.label }}
+                {{ category_form.categoryName }}
+                {% if category_form.categoryName.errors %}
                     <div class='error'>
-                        {% for error in form.categoryName.errors %}
+                        {% for error in category_form.categoryName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -18,19 +18,19 @@
             </div>
             <br>
             <div class='form_group'>
-                {{ form.submit }}
+                {{ category_form.submit }}
             </div>
         </form>
 </div>
 <div class='form'>
         <form method='POST' action=''>
-            {{ form.hidden_tag() }}
+            {{ product_form.hidden_tag() }}
             <div class='form_group'>
-                {{ form.productName.label }}
-                {{ form.productName }}
-                {% if form.productName.errors %}
+                {{ product_form.productName.label }}
+                {{ product_form.productName }}
+                {% if product_form.productName.errors %}
                     <div class='error'>
-                        {% for error in form.productName.errors %}
+                        {% for error in product_form.productName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -38,11 +38,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ form.productInfo.label }}
-                {{ form.productInfo }}
-                {% if form.productInfo.errors %}
+                {{ product_form.productInfo.label }}
+                {{ product_form.productInfo }}
+                {% if product_form.productInfo.errors %}
                     <div class='error'>
-                        {% for error in form.productInfo.errors %}
+                        {% for error in product_form.productInfo.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -50,11 +50,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ form.productIMG.label }}
-                {{ form.productIMG }}
-                {% if form.productIMG.errors %}
+                {{ product_form.productIMG.label }}
+                {{ product_form.productIMG }}
+                {% if product_form.productIMG.errors %}
                     <div class='error'>
-                        {% for error in form.productIMG.errors %}
+                        {% for error in product_form.productIMG.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -62,11 +62,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ form.productPrice.label }}
-                {{ form.productPrice }}
-                {% if form.productPrice.errors %}
+                {{ product_form.productPrice.label }}
+                {{ product_form.productPrice }}
+                {% if product_form.productPrice.errors %}
                     <div class='error'>
-                        {% for error in form.productPrice.errors %}
+                        {% for error in product_form.productPrice.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -74,7 +74,7 @@
             </div>
             <br>
             <div class='form_group'>
-                {{ form.submit }}
+                {{ product_form.submit }}
             </div>
         </form>
 </div>

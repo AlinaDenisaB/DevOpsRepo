@@ -1,10 +1,9 @@
-from application import db, login_manager
-from flask_login import UserMixin
-from datetime import datetime
+from application import db
 
 class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     categoryName=db.Column(db.String(30), nullable=False)
+    productID=db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
     
     def __repr__(self):
         return ''.join([
@@ -12,19 +11,20 @@ class Categories(db.Model):
             'Category name: ', self.categoryName, '\r\n'
         ])
 
-class Products(db.Models):
+class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     productName = db.Column(db.String(30), nullable=False)
     productInfo = db.Column(db.String(100), nullable=False)
     productIMG =db.Column(db.LargeBinary, nullable=False)
     productPrice =db.Column(db.Float, nullable=False)
+    category = db.relationship('Categories', backref="category", lazy=True)
 
     def __repr__(self):
         return ''.join(['ProductID: ', str(self.id), '\r\n',
-        'Product name: ', self.productName], '\r\n',
-        'Product info: ', self.productInfo], '\r\n',
-        'ProductIMG: ', self.productIMG,'\r\n', 'Product price ', self.productPrice
-        )
+        'ProductName: ', self.productName, '\r\n',
+        'ProductInfo: ', self.productInfo, '\r\n',
+        'ProductIMG: ', self.productIMG,'\r\n', 'ProductPrice ', self.productPrice
+        ])
 
 
 
