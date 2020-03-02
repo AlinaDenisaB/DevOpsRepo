@@ -1,6 +1,82 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-<p>This is the admin page</p>
+<p>This is the admin page, where you can add, update and remove categories and products</p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.categoryName.label }}
+                {{ form.categoryName }}
+                {% if form.categoryName.errors %}
+                    <div class='error'>
+                        {% for error in form.categoryName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+</div>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.productName.label }}
+                {{ form.productName }}
+                {% if form.productName.errors %}
+                    <div class='error'>
+                        {% for error in form.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form_group'>
+                {{ form.productInfo.label }}
+                {{ form.productInfo }}
+                {% if form.productInfo.errors %}
+                    <div class='error'>
+                        {% for error in form.productInfo.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form_group'>
+                {{ form.productIMG.label }}
+                {{ form.productIMG }}
+                {% if form.productIMG.errors %}
+                    <div class='error'>
+                        {% for error in form.productIMG.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form_group'>
+                {{ form.productPrice.label }}
+                {{ form.productPrice }}
+                {% if form.productPrice.errors %}
+                    <div class='error'>
+                        {% for error in form.productPrice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+</div>
 
 {% endblock %}
