@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FileField, FloatField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import Categories, Products
+from application.models import categories, products
 
 class CategoryForm(FlaskForm):
     categoryName = StringField('CategoryName',

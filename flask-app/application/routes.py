@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import Categories, Products
+from application.models import categories, products
 from application.forms import CategoryForm, ProductForm
 import flask_bcrypt
 
@@ -10,23 +10,26 @@ def home():
     return render_template('home.html', title='Home')
 @app.route('/products')
 def products():
-    productsData=Products.query.all()
-    return render_template('products.html', title='Products', products=productsData)
+    #productsData=products.query.all()
+    return render_template('products.html', title='products')
+#, products=productsData)
 @app.route('/cart')
 def cart():
     return render_template('cart.html', title='Cart')
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    category_form = CategoryForm()
-    if category_form.validate_on_submit():
-        category = Categories(category=category_form.categoryName.data)
-        db.session.add(category)
+    session=db.session
+    categoryForm = CategoryForm()
+    if categoryForm.validate_on_submit():
+        categories = categories(category=categoryForm.categoryName.data)
+        db.session.add(categories)
         db.session.commit()
-        return redirect(url_for('products.html'))
-    product_form = ProductForm()
-    if product_form.validate_on_submit():
-        product = Products(productName=product_form.productName.data, productIMG=product_form.productIMG.data, productInfo=product_form.productInfo.data, productPrice=product_form.productPrice.data)
-        db.session.add(product)
+        return redirect(url_for('products'))
+    productForm = ProductForm()
+    if productForm.validate_on_submit():
+        products = products(productName=productForm.productName.data, productIMG=productForm.productIMG.data, productInfo=productForm.productInfo.data, productPrice=productForm.productPrice.data)
+        db.session.add(products)
         db.session.commit()
-        return redirect(url_for('products.html'))
-    return render_template('admin.html', title="Admin", category_form=category_form, product_form=product_form)
+        return redirect(url_for('products'))
+    return render_template('admin.html', title="Admin", categoryForm=categoryForm, productForm=productForm)
+

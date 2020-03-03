@@ -4,13 +4,13 @@
 <p>This is the admin page, where you can add, update and remove categories and products</p>
 <div class='form'>
         <form method='POST' action=''>
-            {{ category_form.hidden_tag() }}
+            {{ categoryForm.hidden_tag() }}
             <div class='form_group'>
-                {{ category_form.categoryName.label }}
-                {{ category_form.categoryName }}
-                {% if category_form.categoryName.errors %}
+                {{ categoryForm.categoryName.label }}
+                {{ categoryForm.categoryName }}
+                {% if categoryForm.categoryName.errors %}
                     <div class='error'>
-                        {% for error in category_form.categoryName.errors %}
+                        {% for error in categoryForm.categoryName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -18,19 +18,19 @@
             </div>
             <br>
             <div class='form_group'>
-                {{ category_form.submit }}
+                {{ categoryForm.submit }}
             </div>
         </form>
 </div>
 <div class='form'>
         <form method='POST' action=''>
-            {{ product_form.hidden_tag() }}
+            {{ productForm.hidden_tag() }}
             <div class='form_group'>
-                {{ product_form.productName.label }}
-                {{ product_form.productName }}
-                {% if product_form.productName.errors %}
+                {{ productForm.productName.label }}
+                {{ productForm.productName }}
+                {% if productForm.productName.errors %}
                     <div class='error'>
-                        {% for error in product_form.productName.errors %}
+                        {% for error in productForm.productName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -38,11 +38,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ product_form.productInfo.label }}
-                {{ product_form.productInfo }}
-                {% if product_form.productInfo.errors %}
+                {{ productForm.productInfo.label }}
+                {{ productForm.productInfo }}
+                {% if productForm.productInfo.errors %}
                     <div class='error'>
-                        {% for error in product_form.productInfo.errors %}
+                        {% for error in productForm.productInfo.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -50,11 +50,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ product_form.productIMG.label }}
-                {{ product_form.productIMG }}
-                {% if product_form.productIMG.errors %}
+                {{ productForm.productIMG.label }}
+                {{ productForm.productIMG }}
+                {% if productForm.productIMG.errors %}
                     <div class='error'>
-                        {% for error in product_form.productIMG.errors %}
+                        {% for error in productForm.productIMG.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -62,11 +62,11 @@
             </div>
             <br>
 	    <div class='form_group'>
-                {{ product_form.productPrice.label }}
-                {{ product_form.productPrice }}
-                {% if product_form.productPrice.errors %}
+                {{ productForm.productPrice.label }}
+                {{ productForm.productPrice }}
+                {% if productForm.productPrice.errors %}
                     <div class='error'>
-                        {% for error in product_form.productPrice.errors %}
+                        {% for error in productForm.productPrice.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -74,7 +74,7 @@
             </div>
             <br>
             <div class='form_group'>
-                {{ product_form.submit }}
+                {{ productForm.submit }}
             </div>
         </form>
 </div>
