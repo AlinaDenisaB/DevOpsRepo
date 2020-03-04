@@ -18,17 +18,16 @@ def cart():
     return render_template('cart.html', title='Cart')
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    session=db.session
-    categoryForm = CategoryForm()
+    categoryForm=CategoryForm()
     if categoryForm.validate_on_submit():
-        categories = categories(category=categoryForm.categoryName.data)
-        db.session.add(categories)
+        category=categories(categoryName=categoryForm.categoryName.data)
+        db.session.add(category)
         db.session.commit()
         return redirect(url_for('products'))
-    productForm = ProductForm()
+    productForm=ProductForm()
     if productForm.validate_on_submit():
-        products = products(productName=productForm.productName.data, productIMG=productForm.productIMG.data, productInfo=productForm.productInfo.data, productPrice=productForm.productPrice.data)
-        db.session.add(products)
+        product=products(productName=productForm.productName.data, productInfo=productForm.productInfo.data, productIMG=productForm.productIMG.data, productPrice=productForm.productPrice.data)
+        db.session.add(product)
         db.session.commit()
         return redirect(url_for('products'))
     return render_template('admin.html', title="Admin", categoryForm=categoryForm, productForm=productForm)

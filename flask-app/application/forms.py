@@ -10,7 +10,7 @@ class CategoryForm(FlaskForm):
             Length(min=2, max=100)
         ]
     )
-    submit=SubmitField('Add category')
+    submit=SubmitField('Add category!')
 
 class ProductForm(FlaskForm):
     productName = StringField('ProductName',
@@ -35,5 +35,5 @@ class ProductForm(FlaskForm):
             DataRequired()
         ]
     )
-    submit=SubmitField('Add product')
+    submit=SubmitField('Add product!')
 
