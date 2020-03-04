@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FileField, FloatField
+from wtforms import Form, StringField, SubmitField, FileField, FloatField, IntegerField, validators
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import categories, products
 
 class CategoryForm(FlaskForm):
-    categoryName = StringField('CategoryName',
-        validators = [
+    categoryName=StringField('CategoryName',
+        validators=[
             DataRequired(),
             Length(min=2, max=100)
         ]
@@ -13,25 +13,25 @@ class CategoryForm(FlaskForm):
     submit=SubmitField('Add category!')
 
 class ProductForm(FlaskForm):
-    productName = StringField('ProductName',
-        validators = [
+    productName=StringField('ProductName',
+        validators=[
             DataRequired(),
             Length(min=2, max=100)
         ]
     )
-    productInfo = StringField('ProductInfo',
-        validators = [
+    productInfo=StringField('ProductInfo',
+        validators=[
             DataRequired(),
             Length(min=2, max=1000)
         ]
     )
-    productIMG = FileField('ProductIMG',
-        validators = [
+    productIMG=FileField('ProductIMG',
+        validators=[
             DataRequired()
         ]
             )
-    productPrice = FloatField('ProductPrice',
-        validators = [
+    productPrice=FloatField('ProductPrice',
+        validators=[
             DataRequired()
         ]
     )

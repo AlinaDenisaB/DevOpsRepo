@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-<p>This is the admin page, where you can add, update and remove categories and products</p>
+<p><b>This is the admin page, where the admin can add, update and remove categories and products!</b></p>
 <div class='form'>
         <form method='POST' action=''>
-            {{ categoryForm.hidden_tag() }}
+            {{ form.hidden_tag() }}
             <div class='form_group'>
-                {{ categoryForm.categoryName.label }}
-                {{ categoryForm.categoryName }}
-                {% if categoryForm.categoryName.errors %}
+                {{ form.categoryName.label }}
+                {{ form.categoryName }}
+                {% if form.categoryName.errors %}
                     <div class='error'>
-                        {% for error in categoryForm.categoryName.errors %}
+                        {% for error in form.categoryName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -18,7 +18,7 @@
             </div>
             <br>
             <div class='form_group'>
-                {{ categoryForm.submit }}
+                {{ form.submit }}
             </div>
         </form>
 </div>
@@ -27,57 +27,57 @@
 <br>
 <div class='form'>
         <form method='POST' action=''>
-            {{ productForm.hidden_tag() }}
-            <div class='form_group'>
-                {{ productForm.productName.label }}
-                {{ productForm.productName }}
-                {% if productForm.productName.errors %}
+            {{ form1.hidden_tag() }}
+            <div class='form-group'>
+                {{ form1.productName.label }}
+                {{ form1.productName }}
+                {% if form1.productName.errors %}
                     <div class='error'>
-                        {% for error in productForm.productName.errors %}
+                        {% for error in form1.productName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}
             </div>
             <br>
-	    <div class='form_group'>
-                {{ productForm.productInfo.label }}
-                {{ productForm.productInfo }}
-                {% if productForm.productInfo.errors %}
+	    <div class='form-group'>
+                {{ form1.productInfo.label }}
+                {{ form1.productInfo }}
+                {% if form1.productInfo.errors %}
                     <div class='error'>
-                        {% for error in productForm.productInfo.errors %}
+                        {% for error in form1.productInfo.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}
             </div>
             <br>
-	    <div class='form_group'>
-                {{ productForm.productIMG.label }}
-                {{ productForm.productIMG }}
-                {% if productForm.productIMG.errors %}
+	    <div class='form-group'>
+                {{ form1.productIMG.label }}
+                {{ form1.productIMG }}
+                {% if form1.productIMG.errors %}
                     <div class='error'>
-                        {% for error in productForm.productIMG.errors %}
+                        {% for error in form1.productIMG.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}
             </div>
             <br>
-	    <div class='form_group'>
-                {{ productForm.productPrice.label }}
-                {{ productForm.productPrice }}
-                {% if productForm.productPrice.errors %}
+	    <div class='form-group'>
+                {{ form1.productPrice.label }}
+                {{ form1.productPrice }}
+                {% if form1.productPrice.errors %}
                     <div class='error'>
-                        {% for error in productForm.productPrice.errors %}
+                        {% for error in form1.productPrice.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% endif %}
             </div>
             <br>
-            <div class='form_group'>
-                {{ productForm.submit }}
+            <div class='form-group'>
+                {{ form1.submit }}
             </div>
         </form>
 </div>

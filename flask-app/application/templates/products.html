@@ -157,7 +157,11 @@ h1 {
   <button class="btn" onclick="filterSelection('mugs')"> Mugs</button>
   <button class="btn" onclick="filterSelection('notebooks')"> Notebooks</button>
   <button class="btn" onclick="filterSelection('tshirts')"> T-shirts</button>
-  <button class="btn" onclick="filterSelection('categoryName')">categoryForm.categoryName</button>
+  {% for category in categories %}
+  	<div id ="myBtnContainer">
+  		<button class="btn" onclick="filterSelection('categoryName')">{{category.categories.categoryName}}</button>
+  	</div>
+  {% endfor %}
 </div>
 
 <div class="row">

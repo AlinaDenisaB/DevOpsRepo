@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import categories, products
+from application.models import categories, products, categories_products
 from application.forms import CategoryForm, ProductForm
 import flask_bcrypt
 
@@ -19,16 +19,22 @@ def cart():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     categoryForm=CategoryForm()
+    productForm=ProductForm()
     if categoryForm.validate_on_submit():
-        category=categories(categoryName=categoryForm.categoryName.data)
+        category=categories(
+                categoryName=categoryForm.categoryName.data
+            )
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for('products'))
-    productForm=ProductForm()
-    if productForm.validate_on_submit():
-        product=products(productName=productForm.productName.data, productInfo=productForm.productInfo.data, productIMG=productForm.productIMG.data, productPrice=productForm.productPrice.data)
+        return render_template('products.html', form=categoryForm)
+    elif productForm.validate_on_submit():
+        product=products(
+                productName=productForm.productName.data,
+                productInfo=productForm.productInfo.data,
+                productIMG=productForm.productIMG.data,
+                productPrice=productForm.productPrice.data
+            )
         db.session.add(product)
         db.session.commit()
-        return redirect(url_for('products'))
-    return render_template('admin.html', title="Admin", categoryForm=categoryForm, productForm=productForm)
-
+        return render_template('products.html', form1=productForm)
+    return render_template('admin.html', form=categoryForm, form1=productForm)
