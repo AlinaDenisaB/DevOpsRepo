@@ -1,11 +1,17 @@
-from flask import Flask
+from flask import Flask, flash, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 import os
 from os import getenv
+#from werkzeug.utils import secure_filename
 
 app= Flask(__name__)
 bcrypt = Bcrypt(app)
+
+#UPLOAD_FOLDER='./static'
+#ALLOWED_EXTENSTIONS={'txt','pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = str(os.getenv('DATABASE_URI')
