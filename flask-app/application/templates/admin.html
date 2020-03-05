@@ -84,5 +84,51 @@
 <br>
 <hr>
 <br>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form2.hidden_tag() }}
+            <div class='form_group'>
+                {{ form2.categoryName.label }}
+                {{ form2.categoryName }}
+                {% if form2.categoryName.errors %}
+                    <div class='error'>
+                        {% for error in form2.categoryName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form2.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form3.hidden_tag() }}
+            <div class='form_group'>
+                {{ form3.productName.label }}
+                {{ form3.productName }}
+                {% if form3.productName.errors %}
+                    <div class='error'>
+                        {% for error in form3.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form3.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
 
 {% endblock %}

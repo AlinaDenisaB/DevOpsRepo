@@ -1,22 +1,29 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Categories, Products, categories_products
-from application.forms import CategoryForm, ProductForm
+from application.forms import CategoryForm, ProductForm, DeleteCategory, DeleteProduct
 import flask_bcrypt
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html', title='Home')
+
 @app.route('/products')
 def products():
-    #productsData=products.query.all()
-    return render_template('products.html', title='products')
-#, products=productsData)
+    products = Products.query.all()
+    categories=Categories.query.all()
+    catLen=len(categories)
+    return render_template("products.html", categories=categories, catLen=catLen, products=products)
+
 @app.route('/cart')
 def cart():
-    return render_template('cart.html', title='Cart')
 
+    products = Products.query.all()
+    categories=Categories.query.all()
+    catLen=len(categories)
+    return render_template("cart.html", categories=categories, catLen=catLen, products=products)
+    
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     categoryForm=CategoryForm()
@@ -39,5 +46,27 @@ def admin():
         db.session.add(product)
         db.session.commit()
         return redirect(url_for('products'))
-    return render_template('admin.html', form=categoryForm, form1=productForm)
+    
+    deleteCategory=DeleteCategory()
+    if deleteCategory.validate_on_submit():
+        category=Categories(
+            categoryName=deleteCategory.categoryName.data
+            )
+        db.session.delete(category)
+        db.session.commit()
+        return redirect(url_for('products'))
 
+    deleteProduct=DeleteProduct()
+    if deleteProduct.validate_on_submit():
+        product=Products(
+            productName=deleteProduct.productName.data
+            )
+        db.session.delete(product)
+        db.session.commit()
+        return redirect(url_for('products'))
+    return render_template('admin.html', form=categoryForm, form1=productForm, form2=deleteCategory, form3=deleteProduct)
+
+    categories=Categories.query.all()
+    return render_template("products.html", categories=categories)
+    products = Products.query.all()
+    return render_template("products.html", products=products)
