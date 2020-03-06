@@ -8,10 +8,9 @@ from os import getenv
 app= Flask(__name__)
 bcrypt = Bcrypt(app)
 
-#UPLOAD_FOLDER='./static'
+#PRODUCTS_FOLDER=os.path.join('static')
 #ALLOWED_EXTENSTIONS={'txt','pdf', 'png', 'jpg', 'jpeg', 'gif'}
-
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#app.config['UPLOAD_FOLDER'] = PRODUCTS_FOLDER
 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = str(os.getenv('DATABASE_URI')

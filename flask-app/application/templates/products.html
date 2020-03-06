@@ -221,6 +221,8 @@ h1 {
 {% for j in products %}
 <div class="column categoryName">
      <div class="content" align="center">
+	     <img src="{{ loc_image+j.productIMG }}" alt="{{j.productName}}" height="250" width="300"/>
+      <h3>{{j.productIMG}}</h3>
       <h3>{{j.productName}}</h3>
       <p class="price">{{j.productPrice}}</p>
       <p><i>{{j.productInfo}}</i></p>

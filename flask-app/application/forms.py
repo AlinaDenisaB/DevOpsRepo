@@ -1,4 +1,5 @@
-from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm, RecaptchaField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import Form, StringField, SubmitField, FloatField, IntegerField, validators
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Categories, Products
@@ -25,12 +26,11 @@ class ProductForm(FlaskForm):
             Length(min=2, max=1000)
         ]
     )
-    productIMG=StringField('ProductIMG',
+    productIMG=FileField('ProductIMG',
         validators=[
-            DataRequired(),
-            Length(min=2, max=100)
+            FileAllowed(['jpg','png'])
         ]
-            )
+    )
     productPrice=FloatField('ProductPrice',
         validators=[
             DataRequired()

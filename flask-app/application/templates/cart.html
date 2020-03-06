@@ -1,8 +1,14 @@
 {% extends "layout.html" %}
-
 {% block body_content %}
 <p>This is your cart</p>
 {% for i in categories %}
+
+
+{% for i in Products %}
+<div>{{i.productName}}</div>
+<div>{{i.productIMG}}</div>
+{% endfor %}
+
 <div><button class="btn" onclick="filterSelection('{i.categoryName}')">{{i.categoryName}}</button></div>
 {% endfor %}
 <div class='row'>
@@ -18,5 +24,6 @@
     </div>
   </div>
 {% endfor %}
+
 
 {% endblock %}
