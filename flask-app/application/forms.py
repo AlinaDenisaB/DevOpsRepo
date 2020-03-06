@@ -38,6 +38,20 @@ class ProductForm(FlaskForm):
     )
     submit=SubmitField('Add product!')
 
+class UpdateProducts(FlaskForm):
+    productName=StringField('ProductName',
+        validators=[
+            DataRequired(),
+            Length(min=2, max=100)
+        ]
+    )
+    productPrice=FloatField('ProductPrice',
+        validators=[
+            DataRequired()
+        ]
+    )
+    submit=SubmitField('Update product!')
+
 class DeleteCategory(FlaskForm):
     categoryName=StringField('CategoryName',
         validators=[

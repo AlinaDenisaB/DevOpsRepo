@@ -1,29 +1,5 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<p>This is your cart</p>
-{% for i in categories %}
-
-
-{% for i in Products %}
-<div>{{i.productName}}</div>
-<div>{{i.productIMG}}</div>
-{% endfor %}
-
-<div><button class="btn" onclick="filterSelection('{i.categoryName}')">{{i.categoryName}}</button></div>
-{% endfor %}
-<div class='row'>
-
-<p>test</p>
-
-{% for j in products %}
-     <div class="content" align="center">
-      <h3>{{j.productName}}</h3>
-      <p class="price">{{j.productPrice}}</p>
-      <p><i>{{j.productInfo}}</i></p>
-      <p><button>Add to Cart</button></p>
-    </div>
-  </div>
-{% endfor %}
-
+<p>This is your cart:(making updates for this page, it is going to be available soon) &#128533; </p>
 
 {% endblock %}

@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Categories, Products, categories_products
-from application.forms import CategoryForm, ProductForm, DeleteCategory, DeleteProduct
+from application.forms import CategoryForm, ProductForm, UpdateProducts, DeleteCategory, DeleteProduct
 import flask_bcrypt
 import os
 import secrets
@@ -34,11 +34,12 @@ def save_img(form_picture):
     _name, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/productIMG', picture_fn)
-    output_size=(250,300)
+    output_size=(300,250)
     i=Image.open(form_picture)
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_fn
+
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -63,6 +64,13 @@ def admin():
         db.session.commit()
         return redirect(url_for('products'))
     
+    updateProduct=UpdateProducts()
+    if updateProduct.validate_on_submit():
+        newPrice=Products.query.filter_by(productName=updateProduct.productName.data).update(dict(productPrice=updateProduct.productPrice.data))
+        db.session.commit()
+        return redirect(url_for('products'))
+
+
     deleteCategory=DeleteCategory()
     if deleteCategory.validate_on_submit():
         category=Categories(
@@ -80,7 +88,7 @@ def admin():
         db.session.delete(product)
         db.session.commit()
         return redirect(url_for('products'))
-    return render_template('admin.html', form=categoryForm, form1=productForm, form2=deleteCategory, form3=deleteProduct)
+    return render_template('admin.html', form=categoryForm, form1=productForm, form4=updateProduct, form2=deleteCategory, form3=deleteProduct)
 
     categories=Categories.query.all()
     return render_template("products.html", categories=categories)

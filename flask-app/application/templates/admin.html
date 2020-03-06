@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-<p><b>This is the admin page, where the admin can add, update and remove categories and products!</b></p>
+<p><h3><b>This is the admin page, where the admin can add, update and remove categories and products!</b></h3></p>
+<p><h4><b>There is the form for adding new categories:</b></h4></p>
 <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
@@ -25,6 +26,7 @@
 <br>
 <hr>
 <br>
+<p><h4><b>There is the form for adding new products:</b></h4></p>
 <div class='form'>
         <form method='POST' action='' enctype="multipart/form-data">
             {{ form1.hidden_tag() }}
@@ -84,6 +86,43 @@
 <br>
 <hr>
 <br>
+<p><h4><b>There is the form for updating the price of the products:</b></h4></p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form4.hidden_tag() }}
+            <div class='form-group'>
+                {{ form4.productName.label }}
+                {{ form4.productName }}
+                {% if form4.productName.errors %}
+                    <div class='error'>
+                        {% for error in form4.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form-group'>
+                {{ form4.productPrice.label }}
+                {{ form4.productPrice }}
+                {% if form4.productPrice.errors %}
+                    <div class='error'>
+                        {% for error in form4.productPrice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form-group'>
+                {{ form4.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+<p><h4><b>There is the form for removing the existing categories:</b></h4></p>
 <div class='form'>
         <form method='POST' action=''>
             {{ form2.hidden_tag() }}
@@ -107,6 +146,7 @@
 <br>
 <hr>
 <br>
+<p><h4><b>There is the form for removing existing products:</b></h4></p>
 <div class='form'>
         <form method='POST' action=''>
             {{ form3.hidden_tag() }}
