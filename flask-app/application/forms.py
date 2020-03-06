@@ -52,15 +52,6 @@ class UpdateProducts(FlaskForm):
     )
     submit=SubmitField('Update product!')
 
-class DeleteCategory(FlaskForm):
-    categoryName=StringField('CategoryName',
-        validators=[
-            DataRequired(),
-            Length(min=2, max=100)
-        ]
-    )
-    submit=SubmitField('Delete category!')
-
 class DeleteProduct(FlaskForm):
     productName=StringField('ProductName',
         validators=[

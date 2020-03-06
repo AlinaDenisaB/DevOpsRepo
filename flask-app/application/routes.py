@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
 from application.models import Categories, Products, categories_products
-from application.forms import CategoryForm, ProductForm, UpdateProducts, DeleteCategory, DeleteProduct
+from application.forms import CategoryForm, ProductForm, UpdateProducts, DeleteProduct
 import flask_bcrypt
 import os
 import secrets
@@ -20,14 +20,10 @@ def products():
     loc_image= url_for('static', filename='productIMG/')
     return render_template("products.html", categories=categories, products=products, loc_image=loc_image)
 
-
 @app.route('/cart')
 def cart():
 
-    products = Products.query.all()
-    categories=Categories.query.all()
-    catLen=len(categories)
-    return render_template("cart.html", categories=categories, catLen=catLen, products=products)
+    return render_template("cart.html", title='Cart')
 
 def save_img(form_picture):
     random_hex = secrets.token_hex(8)
@@ -39,7 +35,6 @@ def save_img(form_picture):
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_fn
-
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -58,8 +53,12 @@ def admin():
             FinalIMG=save_img(productForm.productIMG.data)
             Products.productIMG = FinalIMG
 
-        product=Products(productName=productForm.productName.data, productInfo=productForm.productInfo.data,productIMG=FinalIMG,productPrice=productForm.productPrice.data)
-
+        product=Products(
+                productName=productForm.productName.data, 
+                productInfo=productForm.productInfo.data,
+                productIMG=FinalIMG,
+                productPrice=productForm.productPrice.data
+        )
         db.session.add(product)
         db.session.commit()
         return redirect(url_for('products'))
@@ -70,27 +69,10 @@ def admin():
         db.session.commit()
         return redirect(url_for('products'))
 
-
-    deleteCategory=DeleteCategory()
-    if deleteCategory.validate_on_submit():
-        category=Categories(
-            categoryName=deleteCategory.categoryName.data
-            )
-        db.session.delete(category)
-        db.session.commit()
-        return redirect(url_for('products'))
-
     deleteProduct=DeleteProduct()
     if deleteProduct.validate_on_submit():
-        product=Products(
-            productName=deleteProduct.productName.data
-            )
-        db.session.delete(product)
+        Products.query.filter_by(productName=deleteProduct.productName.data).delete()
         db.session.commit()
         return redirect(url_for('products'))
-    return render_template('admin.html', form=categoryForm, form1=productForm, form4=updateProduct, form2=deleteCategory, form3=deleteProduct)
 
-    categories=Categories.query.all()
-    return render_template("products.html", categories=categories)
-    products = Products.query.all()
-    return render_template("products.html", products=products)
+    return render_template('admin.html', form=categoryForm, form1=productForm, form2=updateProduct, form3=deleteProduct)

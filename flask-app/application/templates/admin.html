@@ -89,13 +89,13 @@
 <p><h4><b>There is the form for updating the price of the products:</b></h4></p>
 <div class='form'>
         <form method='POST' action=''>
-            {{ form4.hidden_tag() }}
+            {{ form2.hidden_tag() }}
             <div class='form-group'>
-                {{ form4.productName.label }}
-                {{ form4.productName }}
-                {% if form4.productName.errors %}
+                {{ form2.productName.label }}
+                {{ form2.productName }}
+                {% if form2.productName.errors %}
                     <div class='error'>
-                        {% for error in form4.productName.errors %}
+                        {% for error in form2.productName.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -103,11 +103,11 @@
             </div>
             <br>
 	    <div class='form-group'>
-                {{ form4.productPrice.label }}
-                {{ form4.productPrice }}
-                {% if form4.productPrice.errors %}
+                {{ form2.productPrice.label }}
+                {{ form2.productPrice }}
+                {% if form2.productPrice.errors %}
                     <div class='error'>
-                        {% for error in form4.productPrice.errors %}
+                        {% for error in form2.productPrice.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -115,30 +115,6 @@
             </div>
             <br>
             <div class='form-group'>
-                {{ form4.submit }}
-            </div>
-        </form>
-</div>
-<br>
-<hr>
-<br>
-<p><h4><b>There is the form for removing the existing categories:</b></h4></p>
-<div class='form'>
-        <form method='POST' action=''>
-            {{ form2.hidden_tag() }}
-            <div class='form_group'>
-                {{ form2.categoryName.label }}
-                {{ form2.categoryName }}
-                {% if form2.categoryName.errors %}
-                    <div class='error'>
-                        {% for error in form2.categoryName.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            <br>
-            <div class='form_group'>
                 {{ form2.submit }}
             </div>
         </form>
