@@ -45,6 +45,6 @@ Individual project that involves concepts from all core training modules.
 -> Microsoft Azure - Live environment
 ## Front End Design ##
 ![AddCategories-Products](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/addCategories-Products.png)
-
+![UpdatePrice&DeleteProducts](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/UpdateAndDeleteProducts.png)
 ## Future improvements ##
   As future improvements, the application will allow to the customer to add products to the cart, to remove products from the cart, to change the quantity and to do the payments, so their order can be delivered. And because the customers' opinion matters, a new page will be dedicated for reviews, so the business can change permanently in order to satisfy the custumers' needs.  
