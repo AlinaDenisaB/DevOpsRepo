@@ -3,14 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 import os
 from os import getenv
-#from werkzeug.utils import secure_filename
 
 app= Flask(__name__)
 bcrypt = Bcrypt(app)
-
-#PRODUCTS_FOLDER=os.path.join('static')
-#ALLOWED_EXTENSTIONS={'txt','pdf', 'png', 'jpg', 'jpeg', 'gif'}
-#app.config['UPLOAD_FOLDER'] = PRODUCTS_FOLDER
 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = str(os.getenv('DATABASE_URI')
