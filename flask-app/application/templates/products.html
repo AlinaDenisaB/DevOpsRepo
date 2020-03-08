@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {font-family: "Lato", sans-serif;}
+.sidebar {
+  height: 100%;
+  width: 120px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #66ff99;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.content button{
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #66ff99;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.content button:hover {
+  opacity: 0.7;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a href="{{url_for('home')}}"> Home </a>
+  <a href="{{url_for('products')}}"> Products </a>
+  <a href="{{url_for('cart')}}"> Cart </a>
+  <a href="{{url_for('admin')}}"> Admin </a>
+</div>
+
+<div class="main" align="center" >
+<h1>ONLINE STORE APPLICATION</h1>
+<hr>
+
+<h2>CATEGORY</h2>
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('mugs')"> Mugs</button>
+  <button class="btn" onclick="filterSelection('notebooks')"> Notebooks</button>
+  <button class="btn" onclick="filterSelection('tshirts')"> T-shirts</button>
+  {% for i in categories %}
+	<button class="btn" onclick="filterSelection('{i.categoryName}')">{{i.categoryName}}</button>
+  {% endfor %}
+</div>
+
+<div class="row">
+  <div class="column mugs">
+    <div class="content" align="center">
+	<img src="{{url_for('static', filename='mug1.jpg')}}" alt="Mug rings" height="250" width="300">
+        <h3>Mug rings</h3>
+	<p class="price">£6.99</p>
+        <p><i>The rings go and your finger stay</i></p>
+	<p><button>Add to Cart</button></p>
+    </div>
+  </div>
+  <div class="column mugs">
+    <div class="content" align="center">
+    <img src="{{url_for('static', filename='mug2.jpg')}}" alt="Mug Fish" height="250" width="300">
+      <h3>Mug Fish</h3>
+      <p class="price">£6.99</p>
+      <p><i>Fish dies by the mouth</i></p>
+      <p><button>Add to Cart</button></p>
+    </div>
+  </div>
+  <div class="column notebooks">
+    <div class="content" align="center">
+      <img src="{{url_for('static', filename='notebook1.jpg')}}" alt="Notebook Lisbon Tram" height="250" width="300">
+      <h3>Notebook Lisbon Tram</h3>
+      <p class="price">£4.99</p>
+      <p><i>One of the most famous icons of Lisbon</i></p>
+      <p><button>Add to Cart</button></p>
+    </div>
+  </div>
+  <div class="column notebooks">
+    <div class="content" align="center">
+     <img src="{{url_for('static', filename='notebook2.jpg')}}" alt="Notebook Moon" height="250" width="300">
+     <h3>Notebook Moon</h3>
+     <p class="price">£4.99</p>
+     <p><i>The night is a good counselor</i></p>
+     <p><button>Add to Cart</button></p>
+    </div>
+  </div>
+  <div class="column tshirts">
+    <div class="content" align="center">
+      <img src="{{url_for('static', filename='tshirt1.jpg')}}" alt="T-shirt monkey" height="250" width="300">
+      <h3>T-shirt monkey</h3>
+      <p class="price">£17.99</p>
+      <p><i>Each monkey on its branch</i></p>
+      <p><button>Add to Cart</button></p>
+    </div>
+  </div>
+  <div class="column tshirts">
+    <div class="content" align="center">
+    <img src="{{url_for('static', filename='tshirt2.jpg')}}" alt="T-shirt time" height="250" width="300">
+      <h3>T-shirt time</h3>
+      <p class="price">£17.99</p>
+      <p><i>Time is the clock of life</i></p>
+      <p><button>Add to Cart</button></p>
+    </div>
+  </div>
+
+{% for j in products %}
+<div class="column categoryName">
+     <div class="content" align="center">
+	<img src="{{ loc_image+j.productIMG }}" alt="{{j.productName}}" height="250" width="300"/>
+      <h3>{{j.productName}}</h3>
+      <p class="price">£{{j.productPrice}}</p>
+      <p><i>{{j.productInfo}}</i></p>
+      <p><button>Add to Cart</button></p>
+    </div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+  }
+}
+
+function AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block body_content %}
+<p><h3><b>This is the admin page, where the admin can add, update and remove categories and products!</b></h3></p>
+<p><h4><b>There is the form for adding new categories:</b></h4></p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.categoryName.label }}
+                {{ form.categoryName }}
+                {% if form.categoryName.errors %}
+                    <div class='error'>
+                        {% for error in form.categoryName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+<p><h4><b>There is the form for adding new products:</b></h4></p>
+<div class='form'>
+        <form method='POST' action='' enctype="multipart/form-data">
+            {{ form1.hidden_tag() }}
+            <div class='form-group'>
+                {{ form1.productName.label }}
+                {{ form1.productName }}
+                {% if form1.productName.errors %}
+                    <div class='error'>
+                        {% for error in form1.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form-group'>
+                {{ form1.productInfo.label }}
+                {{ form1.productInfo }}
+                {% if form1.productInfo.errors %}
+                    <div class='error'>
+                        {% for error in form1.productInfo.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form-group'>
+                {{ form1.productIMG.label }}
+                {{ form1.productIMG }}
+                {% if form1.productIMG.errors %}
+                    <div class='error'>
+                        {% for error in form1.productIMG.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form-group'>
+                {{ form1.productPrice.label }}
+                {{ form1.productPrice }}
+                {% if form1.productPrice.errors %}
+                    <div class='error'>
+                        {% for error in form1.productPrice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form-group'>
+                {{ form1.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+<p><h4><b>There is the form for updating the price of the products:</b></h4></p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form2.hidden_tag() }}
+            <div class='form-group'>
+                {{ form2.productName.label }}
+                {{ form2.productName }}
+                {% if form2.productName.errors %}
+                    <div class='error'>
+                        {% for error in form2.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+	    <div class='form-group'>
+                {{ form2.productPrice.label }}
+                {{ form2.productPrice }}
+                {% if form2.productPrice.errors %}
+                    <div class='error'>
+                        {% for error in form2.productPrice.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form-group'>
+                {{ form2.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+<p><h4><b>There is the form for removing existing products:</b></h4></p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form3.hidden_tag() }}
+            <div class='form_group'>
+                {{ form3.productName.label }}
+                {{ form3.productName }}
+                {% if form3.productName.errors %}
+                    <div class='error'>
+                        {% for error in form3.productName.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form3.submit }}
+            </div>
+        </form>
+</div>
+<br>
+<hr>
+<br>
+
+{% endblock %}
