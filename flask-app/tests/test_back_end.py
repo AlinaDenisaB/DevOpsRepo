@@ -1,6 +1,7 @@
 import unittest
+import pytest_check as check
 
-from flask import abort, url_for
+from flask import abort, url_for, redirect
 from flask_testing import TestCase
 
 from application import app, db
@@ -30,7 +31,7 @@ class TestBase(TestCase):
         # create test category
         testCategory = Categories(categoryName="cattest")
 
-        # save users to database
+        # save the product and the category to database
         db.session.add(testProduct)
         db.session.add(testCategory)
         db.session.commit()
@@ -75,7 +76,7 @@ class testForms(TestBase):
 
     def test_addProducts(self):
         """
-        Test if the products are added to the database
+        Test if the products are added to the database correctly
         """
         #create a test product
         testProduct=Products()
@@ -114,6 +115,14 @@ class testForms(TestBase):
         self.assertEqual(only_category, testCategory)
         self.assertEqual(only_category.categoryName, 'cattest')
 
+    def test_create(self):
+        assert self.client.get('/admin').status_code == 200
+        self.client.post('/admin', data={'title': 'created', 'body': ''})
+
+        with app.app_context():
+            count = db.session.execute('SELECT COUNT(id) FROM products').fetchone()[0]
+            assert count == 1
+
     def test_updateProductPrice(self):
         """
         Test if the price of the products can be updated
@@ -122,11 +131,27 @@ class testForms(TestBase):
         self.assertTrue(testProduct)
         assert testProduct.productPrice != '10'
 
+    def test_update(self):
+        assert self.client.get('/admin').status_code == 200
+        self.client.post('/admin', data={'productPrice': 'updated', 'body': ''})
+
+        with app.app_context():
+            up = db.session.execute('SELECT * FROM products WHERE id=1').fetchone()
+            assert up['productPrice']==10.0 
+
     def test_deleteProduct(self):
         """
         Test if the products can be deleted
         """
-        Products.query.filter_by(productName='nameTEST').delete()
+        testDelProd=Products.query.filter_by(productName='nameTEST').delete()
+        self.assertTrue(testDelProd)
+    
+    def test_delete(self):
+        response=self.client.post('admin')
+
+        with app.app_context():
+            product = db.session.execute('SELECT * FROM products WHERE id=2').fetchone()
+            assert product is None
 
     def create_test_img():
         file=BytesIO()
@@ -138,5 +163,21 @@ class testForms(TestBase):
         form=response.forms['form_picture']
         form['picture_fn']=('picture_fn', create_test_img().read())
         form.submit()
+
+class testValidators(TestBase):
+    def testLenght(self):
+        x=len('nameTEST')
+        a=1
+        b=100
+        c=range(2,101)
+        d=102
+        check.greater(x,a)
+        check.less_equal(x, b)
+        check.is_in(x, c, "Lenght ok")
+        check.is_not_in(d, c, "Lenght not ok")
+
+    def validate_input(self):
+        responde = self.client.post('/admin', data={'productName' : 'nameTEST', 'productInfo':'This is a test product', 'productIMG':'test.jpg', 'productPrice':'10'})
+        assert message in response.data
 
 
