@@ -36,6 +36,8 @@ Individual project that involves concepts from all core training modules.
 
   #### Unit testing with Python - Pytest ####  
 
+![pytest](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/Test_report.png)
+
   #### Continuous Integration Pipeline ####  
   
 ![CI Pipeline](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/CI_Pipeline.jpg)  
