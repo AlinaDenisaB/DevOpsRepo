@@ -27,7 +27,7 @@ Individual project that involves concepts from all core training modules.
   
   #### Risk Assessment: ####  
   
-![Risk_Assessment](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/Risk_Assessment.png)
+![Risk_Assessment](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/RiskAssessment.png)
   
   ## Arhitecture: ##  
   #### Entity Relationships Diagram ####  
