@@ -58,5 +58,7 @@ Individual project that involves concepts from all core training modules.
 ![PP](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/ProductsPage.png)
 ![PP](https://github.com/AlinaDenisaB/DevOpsRepo/blob/master/Documentation/ProductsPage+.png)
 
+[THE_APPLICATION](http://51.132.16.98:5000)
+
 ## Future improvements ##
   * As future improvements, the application will allow to the customer to add products to the cart, to remove products from the cart, to change the quantity and to do the payments, so their order can be delivered. And because the customers' opinion matters, a new page will be dedicated for reviews, so the business can change permanently in order to satisfy the custumers' needs.  
