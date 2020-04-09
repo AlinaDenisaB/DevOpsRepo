@@ -1,18 +1,40 @@
-version: '3.4'
+version: '3.7'
 services:
   flask-app:
-    build: ./flask-app
+    image: alinadenisa/flask-app:latest01
+    container_name: flask-app
     ports:
     - target: 5000
       published: 5000
       protocol: tcp
+    depends_on:
+    - db
+    environment:
+    - DATABASE_URI=mysql+pymysql://root:password@projectdb/db
+    - SECRET_KEY=mysecretkey
+  db:
+    image: alinadenisa/onlinestore-db:latest4
+    container_name: projectdb
+    environment:
+    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_DATABASE=db
+    volumes:
+    - type: volume
+      source: flasksql
+      target: /var/lib/mysql
+  
   nginx:
     image: nginx:latest
     ports:
     - target: 80
       published: 80
       protocol: tcp
+    depends_on:
+    - flask-app
     volumes:
     - type: bind
       source: ./nginx/nginx.conf
       target: /etc/nginx/nginx.conf
+volumes:
+    flasksql:
+     
