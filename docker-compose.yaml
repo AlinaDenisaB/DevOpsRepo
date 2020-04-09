@@ -10,11 +10,11 @@ services:
     depends_on:
     - db
     environment:
-    - DATABASE_URI=mysql+pymysql://root:password@projectdb/db
+    - DATABASE_URI=mysql+pymysql://root:password@db/db
     - SECRET_KEY=mysecretkey
   db:
     image: alinadenisa/onlinestore-db:latest4
-    container_name: projectdb
+    container_name: db
     environment:
     - MYSQL_ROOT_PASSWORD=password
     - MYSQL_DATABASE=db
