@@ -2,7 +2,7 @@ resource "azurerm_network_interface" "worker" {
   name = "${terraform.workspace}-master-nic"
   location  = var.resource_group.location
   resource_group_name = var.resource_group.name
-  network_security_group_id = azurerm_network_security_group.master.id
+  network_security_group_id = azurerm_network_security_group.worker.id
   ip_configuration {
     name = "${terraform.workspace}-worker"
     subnet_id = azurerm_subnet.default.id
