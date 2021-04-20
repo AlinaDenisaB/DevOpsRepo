@@ -21,7 +21,7 @@ packaging==20.3
 Pillow==7.0.0
 pkg-resources==0.0.0
 pluggy==0.13.1
-py==1.8.1
+py==1.10.0
 pycparser==2.19
 PyMySQL==0.9.3
 pyparsing==2.4.6
